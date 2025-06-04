@@ -1,4 +1,4 @@
-const apiUrl = 'http://192.168.0.108:3000/produtos';
+const apiUrl = 'http://127.0.0.1:3000/produtos';
 
 document.addEventListener('DOMContentLoaded', () => {
   const lista = document.getElementById('listaProdutos');

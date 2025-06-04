@@ -10,7 +10,7 @@
     const preco = parseFloat(document.getElementById('valor').value);
     const quantidade = parseInt(document.getElementById('quantia').value);
 
-    const res = await fetch('http://192.168.0.108:3000/produtos', {
+    const res = await fetch('http://127.0.0.1:3000/produtos', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ nome, preco, quantidade })
@@ -29,7 +29,7 @@
     const preco = parseFloat(document.getElementById('edit-valor').value);
     const quantidade = parseInt(document.getElementById('edit-quantia').value);
 
-    const res = await fetch(`http://192.168.0.108:3000/produtos/${id}`, {
+    const res = await fetch(`http://127.0.0.1:3000/produtos/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ nome, preco, quantidade })
@@ -44,7 +44,7 @@
   formDelete.addEventListener('submit', async (e) => {
     e.preventDefault();
     const id = parseInt(document.getElementById('delete-id').value);
-    const res = await fetch(`http://192.168.0.108:3000/produtos/${id}`, {
+    const res = await fetch(`http://127.0.0.1:3000/produtos/${id}`, {
       method: 'DELETE'
     });
 
