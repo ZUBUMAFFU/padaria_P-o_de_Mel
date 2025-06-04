@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Padaria Pão de Mel</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #fff4e6;
+      color: #5a3e1b;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 30px;
+    }
+
+    .container {
+      background: #f9e4b7;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 350px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+      color: #a9682d;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .tabs button {
+      flex: 1;
+      padding: 10px;
+      margin: 0 3px;
+      background-color: #d9b382;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #5a3e1b;
+    }
+
+    .tabs button.active {
+      background-color: #a9682d;
+      color: white;
+    }
+
+    form {
+      display: none;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    form.active {
+      display: flex;
+    }
+
+    label {
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+      padding: 10px;
+      font-size: 1rem;
+      border: 2px solid #d9b382;
+      border-radius: 6px;
+    }
+
+    input[type="submit"] {
+      padding: 12px;
+      font-size: 1.1rem;
+      background-color: #a9682d;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #7a4c1a;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Padaria Pão de Mel</h1>
+
+    <div class="tabs">
+      <button id="tab-add" class="active">Adicionar</button>
+      <button id="tab-edit">Editar</button>
+      <button id="tab-delete">Excluir</button>
+    </div>
+
+<!-- Formulário Adicionar -->
+<form id="formAdd" class="active">
+  <label for="nome">Nome</label>
+  <input type="text" id="nome" required 
+         pattern="^[a-zA-Z0-9\sçÇáéíóúãõâêîôûÁÉÍÓÚÃÕÂÊÎÔÛ]+$" 
+         title="Use apenas letras, números e espaços." />
+
+  <label for="valor">Valor</label>
+  <input type="number" id="valor" step="0.01" min="0" required />
+
+  <label for="quantia">Quantidade</label>
+  <input type="number" id="quantia" step="1" min="0" required />
+  <input type="submit" value="Adicionar" />
+</form>
+
+<!-- Formulário Editar -->
+<form id="formEdit">
+  <label for="edit-id">ID do Produto</label>
+  <input type="number" id="edit-id" required />
+
+  <label for="edit-nome">Novo Nome</label>
+  <input type="text" id="edit-nome" 
+         pattern="^[a-zA-Z0-9\sçÇáéíóúãõâêîôûÁÉÍÓÚÃÕÂÊÎÔÛ]*$" 
+         title="Use apenas letras, números e espaços." />
+
+  <label for="edit-valor">Novo Valor</label>
+  <input type="number" id="edit-valor" step="0.01" min="0" />
+
+  <label for="edit-quantia">Nova Quantidade</label>
+  <input type="number" id="edit-quantia" step="1" min="0" />
+  <input type="submit" value="Atualizar" />
+</form>
+
+<!-- Formulário Excluir -->
+<form id="formDelete">
+  <label for="delete-id">ID do Produto</label>
+  <input type="number" id="delete-id" required />
+  <input type="submit" value="Excluir" />
+</form>
+
+
+  <script>
+    const tabAdd = document.getElementById('tab-add');
+    const tabEdit = document.getElementById('tab-edit');
+    const tabDelete = document.getElementById('tab-delete');
+
+    const formAdd = document.getElementById('formAdd');
+    const formEdit = document.getElementById('formEdit');
+    const formDelete = document.getElementById('formDelete');
+
+    function ativarAba(botaoAtivo, formAtivo) {
+      [tabAdd, tabEdit, tabDelete].forEach(btn => btn.classList.remove('active'));
+      botaoAtivo.classList.add('active');
+
+      [formAdd, formEdit, formDelete].forEach(f => f.classList.remove('active'));
+      formAtivo.classList.add('active');
+    }
+
+    tabAdd.addEventListener('click', () => ativarAba(tabAdd, formAdd));
+    tabEdit.addEventListener('click', () => ativarAba(tabEdit, formEdit));
+    tabDelete.addEventListener('click', () => ativarAba(tabDelete, formDelete));
+  </script>
+  <script src="/js/products.js"></script>
+</body>
+</html>

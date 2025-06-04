@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Padaria Pão de Mel - Estoque</title>
+  <script src="/js/index.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fff4e6;
+      color: #5a3e1b;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 380px;
+      background: #f9e4b7;
+      border-radius: 12px;
+      padding: 25px 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 24px;
+      color: #a9682d;
+    }
+
+    #pesquisa {
+      width: 100%;
+      padding: 10px 14px;
+      font-size: 1rem;
+      border: 2px solid #d9b382;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      transition: border-color 0.3s ease;
+    }
+    #pesquisa:focus {
+      outline: none;
+      border-color: #a9682d;
+      background-color: #fff8e1;
+    }
+
+    ul#listaProdutos {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      max-height: 320px;
+      overflow-y: auto;
+      border-top: 1px solid #d9b382;
+      border-radius: 0 0 12px 12px;
+    }
+
+    ul#listaProdutos li {
+      padding: 12px 10px;
+      border-bottom: 1px solid #d9b382;
+      display: flex;
+      justify-content: space-between;
+      font-weight: 600;
+      font-size: 1rem;
+      gap: 15px;
+    }
+    ul#listaProdutos li:last-child {
+      border-bottom: none;
+    }
+
+    .produto-nome {
+      flex: 2;
+      color: #5a3e1b;
+    }
+
+    .produto-valor,
+    .produto-quantidade {
+      flex: 1;
+      text-align: right;
+      color: #a9682d;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Estoque - Padaria Pão de Mel</h1>
+    <input type="search" id="pesquisa" placeholder="Pesquisar produto..." autocomplete="off" />
+
+    <ul id="listaProdutos">
+      <!-- Lista gerada via JS -->
+    </ul>
+  </div>
+
+
+</body>
+</html>
